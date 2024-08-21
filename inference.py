@@ -1,4 +1,4 @@
-from src.models import vit_base
+from src.models.vision_transformer import vit_base
 
 model = vit_base()
 
