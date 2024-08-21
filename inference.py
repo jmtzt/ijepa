@@ -31,5 +31,7 @@ image = Image.open(requests.get(url, stream=True).raw)
 transform = make_transforms()
 pixel_values = transform(image).unsqueeze(0)
 
-print(f"Output shape: {model(pixel_values).shape}")
-print(f"Output: {model(pixel_values)}")
+output = model(pixel_values)
+
+print(f"Output shape: {output.shape}")
+print(f"Output: {output}")
