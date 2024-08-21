@@ -17,7 +17,7 @@ state_dict = torch.hub.load_state_dict_from_url(
     map_location="cpu",
 )
 
-model.load_state_dict(state_dict)
+model.load_state_dict(state_dict["encoder"])
 
 # load sample image
 url = "http://images.cocodataset.org/val2017/000000039769.jpg"
