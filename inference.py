@@ -7,9 +7,8 @@ from src.transforms import make_transforms
 model = vit_huge(patch_size=14)
 
 # print model parameters
-for name, param in model.named_parameters():
-    print(name, param.shape)
-
+# for name, param in model.named_parameters():
+#     print(name, param.shape)
 
 # load pre-trained weights
 state_dict = torch.hub.load_state_dict_from_url(
@@ -17,7 +16,12 @@ state_dict = torch.hub.load_state_dict_from_url(
     map_location="cpu",
 )
 
-model.load_state_dict(state_dict["encoder"])
+new_state_dict = {}
+for key, value in state_dict["encoder"].items():
+    new_key = key.replace("module.", "")
+    new_state_dict[new_key] = value
+
+model.load_state_dict(new_state_dict)
 
 # load sample image
 url = "http://images.cocodataset.org/val2017/000000039769.jpg"
