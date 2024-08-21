@@ -1,10 +1,10 @@
 import torch
 import requests
 from PIL import Image
-from src.models.vision_transformer import vit_base
+from src.models.vision_transformer import vit_huge
 from src.transforms import make_transforms
 
-model = vit_base()
+model = vit_huge(patch_size=14)
 
 # print model parameters
 for name, param in model.named_parameters():
@@ -13,7 +13,7 @@ for name, param in model.named_parameters():
 
 # load pre-trained weights
 state_dict = torch.hub.load_state_dict_from_url(
-    "https://dl.fbaipublicfiles.com/ijepa/IN22K-vit.g.16-600e.pth.tar",
+    "https://dl.fbaipublicfiles.com/ijepa/IN1K-vit.h.14-300e.pth.tar",
     map_location="cpu",
 )
 
