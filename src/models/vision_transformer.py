@@ -515,6 +515,7 @@ class VisionTransformer(nn.Module):
         # -- fwd prop
         for i, blk in enumerate(self.blocks):
             x = blk(x)
+            print(f"Block {i}: {x[0, :3, :3]}")
 
         if self.norm is not None:
             x = self.norm(x)
