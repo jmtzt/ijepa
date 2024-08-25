@@ -505,6 +505,9 @@ class VisionTransformer(nn.Module):
         pos_embed = self.interpolate_pos_encoding(x, self.pos_embed)
         x = x + pos_embed
 
+        print(f"x shape after adding pos embed: {x.shape}")
+        print(f"Embed after interpos: {x[0, :3, :3]}")
+
         # -- mask x
         if masks is not None:
             x = apply_masks(x, masks)
