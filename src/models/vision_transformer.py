@@ -498,6 +498,7 @@ class VisionTransformer(nn.Module):
         # -- patchify x
         x = self.patch_embed(x)
         print(f"x shape after patch embed: {x.shape}")
+        print(f"Patch embed: {x[0, :3, :3]}")
         B, N, D = x.shape
 
         # -- add positional embedding to x
